@@ -1,15 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  
-  const {Model} = sequelize.Sequelize
-  class User extends Model{}
+
+  const { Model } = sequelize.Sequelize
+  class User extends Model { }
   User.init({
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     name: DataTypes.STRING,
     age: DataTypes.INTEGER
-  },sequelize)
-  User.associate = function(models) {
+  }, sequelize)
+  User.associate = function (models) {
     // associations can be defined here
     User.hasMany(models.Event)
   };
