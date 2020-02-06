@@ -18,10 +18,12 @@
      <link rel="stylesheet" href="css/owl.theme.default.min.css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
      <script src="https://apis.google.com/js/platform.js" async defer></script>
+     <script src="./scripts/app.js"></script>
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
      <link rel="stylesheet" href="styles/card.css">
+     <link rel="stylesheet" href="styles/detailEvent.css">
 
 
 </head>
@@ -57,10 +59,10 @@
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                          <li><a href="#home" class="smoothScroll">Home</a></li>
-                         <li><a href="#feature" class="smoothScroll">Event</a></li>
-                         <li><a href="#about" class="smoothScroll">Transport</a></li>
-                         <!-- <li><a href="#pricing" class="smoothScroll">Pricing</a></li>
-                         <li><a href="#contact" class="smoothScroll">Contact</a></li> -->
+                         <li><a href="#event" class="smoothScroll">Event</a></li>
+                         <li><a href="#mylist" class="smoothScroll">My List Event</a></li>
+                         <li><a href="#team" class="smoothScroll">Team</a></li>
+                         <!-- <li><a href="#contact" class="smoothScroll">Contact</a></li> -->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                          <!-- <li><a href="#">GoogleSign</span></a></li> -->
@@ -75,7 +77,7 @@
 
 
      <!-- FEATURE -->
-     <section id="home" data-stellar-background-ratio="0.5">
+     <section id="home" data-stellar-background-ratio="0.5" id="formLoginRegister">
           <div class="overlay"></div>
           <!-- ini form login dan signin -->
           <section class="forms-section" style="margin: 0 auto; padding: 0;">
@@ -90,11 +92,11 @@
                                    <legend>Please, enter your email and password for login.</legend>
                                    <div class="input-block">
                                         <label for="login-email">E-mail</label>
-                                        <input id="login-email" type="email" required id="emailLogin">
+                                        <input id="login-email" type="email" required id="LoginEmail">
                                    </div>
                                    <div class="input-block">
                                         <label for="login-password">Password</label>
-                                        <input id="login-password" type="password" required id="passwordLogiin">
+                                        <input id="login-password" type="password" required id="LoginPassword">
                                    </div>
                               </fieldset>
                               <button type="submit" class="btn-login" id="buttonLogin">Login</button>
@@ -105,25 +107,26 @@
                               Sign Up
                               <span class="underline"></span>
                          </button>
-                         <form class="form form-signup">
+                         <form class="form form-signup" id="RegisterForm">
                               <fieldset>
                                    <legend>Please, enter your email, password and password confirmation for sign up.
                                    </legend>
                                    <div class="input-block">
                                         <label for="signup-password">Name</label>
-                                        <input id="signup-password" type="text" required id="nameRegis">
+                                        <input id="signup-password" type="text" required id="RegisterName">
                                    </div>
                                    <div class="input-block">
                                         <label for="signup-password">Age</label>
-                                        <input id="signup-password" type="text" required id="ageRegis">
+                                        <input type="text" required id="RegisterAge">
                                    </div>
                                    <div class="input-block">
                                         <label for="signup-email">E-mail</label>
-                                        <input id="signup-email" type="email" required id="emailRegis">
+                                        <input id="signup-email" type="email" required id="RegisterEmail">
                                    </div>
                                    <div class="input-block">
                                         <label for="signup-password-confirm">password</label>
-                                        <input id="signup-password-confirm" type="password" required id="passwordRegis">
+                                        <input id="signup-password-confirm" type="password" required
+                                             id="RegisterPassword">
                                    </div>
                               </fieldset>
                               <button type="submit" class="btn-signup" id="register">Continue</button>
@@ -134,8 +137,8 @@
      </section>
 
 
-     <!-- FEATURE -->
-     <section id="feature" data-stellar-background-ratio="0.5">
+     <!-- FEATURE SHOW DARI API -->
+     <section id="event eventjq" data-stellar-background-ratio="0.5">
           <div class="container">
                <div class="row">
                     <div class="col-md-offset-3 col-md-6 col-sm-12">
@@ -181,8 +184,106 @@
      </section>
 
 
+
+     <!-- FEATURE SHOW DARI DataBase -->
+     <section id="mylist" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-offset-3 col-md-6 col-sm-12">
+                         <div class="section-title" style="text-align: center;">
+                              <h2> LIST EVENT</h2>
+
+                         </div>
+                    </div>
+                    <section class="cards-wrappers">
+
+                         <!-- ini yang di looping -->
+                         <div class="card-grid-space">
+                              <a class="card" href="#LINKkeMODAL"
+                                   style="--bg-img: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
+                                   <!-- ini link ke image event nanti -->
+                                   <div>
+                                        <!-- ini judul acara -->
+                                        <h1>ACARA PESTA PARTY</h1>
+                                        <!-- ini penggalan acara -->
+                                        <p>Festival hore hore hore cantik</p>
+                                        <!-- ini tanggal acara -->
+                                        <div class="date">6 Oct 2017</div>
+                                   </div>
+                              </a>
+                         </div>
+                         <!-- sampe sini -->
+
+
+                         <div class="card-grid-space">
+                              <a class="card" href="#LINKkeMODAL"
+                                   style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
+                                   <div>
+                                        <h1>Musik DangDut</h1>
+                                        <p>Learn about some of the most common HTML tags…</p>
+                                        <div class="date">9 Oct 2017</div>
+                                   </div>
+                              </a>
+                         </div>
+
+                         <div class="card-grid-space">
+
+                              <a class="card" href="#LINKkeMODAL"
+                                   style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
+                                   <div>
+                                        <h1>Links, images and about file paths</h1>
+                                        <p>Learn how to use links and images along with file paths…</p>
+                                        <div class="date">14 Oct 2017</div>
+                                   </div>
+                              </a>
+                         </div>
+                         <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
+                    </section>
+               </div>
+          </div>
+     </section>
+
+
+     <!-- INI untuk modal -->
+     <section id="mylist" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div>
+                    <div class="wrapper">
+                         <div class="product-img">
+                              <img src="http://bit.ly/2tMBBTd" height="420" width="327">
+                         </div>
+                         <div class="product-info">
+                              <div class="product-text">
+                                   <h1>Harvest Vase</h1>
+                                   <p>Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br>
+                                        functional objects. The surfaces<br> appear to be sliced and pulled aside,<br>
+                                        allowing room for growth. </p>
+                              </div>
+
+                         </div>
+                    </div>
+
+                    <table class="table">
+                         <thead>
+                              <tr>
+                                   <th scope="col">Tanggal</th>
+                                   <th scope="col">Description</th>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              <tr>
+                                   <td>Mark</td>
+                                   <td>Otto</td>
+                              </tr>
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+     </section>
+     <!-- sampai sini modal -->
+
      <!-- ABOUT -->
-     <section id="about" data-stellar-background-ratio="0.5">
+     <section id="team" data-stellar-background-ratio="0.5">
           <div class="container">
                <div class="row">
 
@@ -197,7 +298,7 @@
                               <img src="images/d.jpg" class="img-responsive" alt="Andrew Orange">
                               <div class="team-info team-thumb-up">
                                    <h2>Dimas Wicaksono</h2>
-                                   <small>FrontEnd Dev</small>
+                                   <small>Suka-suka klienlah</small>
                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod tempor incididunt ut
                                         labore et dolore magna.</p>
                               </div>
@@ -233,14 +334,7 @@
      </section>
 
 
-     <!-- TESTIMONIAL -->
-     <section id="testimonial" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
 
-               </div>
-          </div>
-     </section>
 
 
 

@@ -10,20 +10,22 @@ var bcrypt = require("bcryptjs");
 class userController {
   static register(req, res, next) {
     let objInput = {
-      email: req.body.email,
-      password: req.body.password,
       name: req.body.name,
-      age: req.body.age
+      age: req.body.age,
+      email: req.body.email,
+      password: req.body.password
     };
     User.create(objInput)
-    .then(result => {
-      console.log('masuk')
-      res.status(201).json(result);
-    })
-    .catch(err=>{
-      console.log(err)
-    })
+      .then(result => {
+        console.log('masuk')
+        res.status(201).json(result);
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
+
+
   static login(req, res, next) {
     let password = req.body.password;
     let email = req.body.email;
@@ -48,7 +50,8 @@ class userController {
         }
       })
       .catch(err => {
-        next(err);
+        console.log(err)
+        // next(err);
       });
   }
   static googleLogin(req, res, next) {

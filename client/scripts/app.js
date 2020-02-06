@@ -1,5 +1,5 @@
-const localhost = "http://localhost:3000";
-$(document).ready(function() {
+var localhost = "http://localhost:3000";
+$(document).ready(function () {
   var $LoginSubmit = $("#LoginSubmit");
   var $editForm = $("#editForm");
   var $registerForm = $("#RegisterForm");
@@ -15,26 +15,30 @@ $(document).ready(function() {
 
  showEvent()
 
-  $registerForm.on("submit", function(e) {
+  $registerForm.on("submit", function (e) {
     e.preventDefault();
     $.ajax({
       method: "POST",
       url: `${localhost}/user/register`,
       data: {
+        name: $('#RegisterName').val(),
+        age: $('RegisterAge').val(),
         email: $("#RegisterEmail").val(),
         password: $("#RegisterPassword").val()
       }
     })
       .done(result => {
         console.log(1234);
-        $("#registerModal").modal("hide");
+        $('#formLoginRegister').hide()
+        $('#eventjq').show()
+        // $("#registerModal").modal("hide");
       })
       .fail(err => {
         console.log(err, "nnnnnnn");
       });
   });
 
-  $LoginSubmit.click(function(e) {
+  $LoginSubmit.click(function (e) {
     e.preventDefault();
     var $email = $("#LoginEmail").val();
     var $password = $("#LoginPassword").val();
@@ -60,7 +64,7 @@ $(document).ready(function() {
   function showEvent() {
     $.ajax({
       type:"GET",
-      url:"https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY",
+      url:`https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=725191c175fb831a80262bf19644fdf9`,
       dataType: "json",
       success: function(json) {
                   console.log(json);
@@ -95,7 +99,7 @@ $(document).ready(function() {
   }
 
   var Todo = $("#addButton");
-  Todo.on("submit", function(e) {
+  Todo.on("submit", function (e) {
     e.preventDefault();
     let title = $("#AddTitle").val();
     let description = $("#AddDescription").val();
@@ -119,7 +123,7 @@ $(document).ready(function() {
     });
   }
 
-  $(this).click(function(e) {
+  $(this).click(function (e) {
     if (document.activeElement.id === "deleteButton") {
       e.preventDefault();
       deleteTodo(document.activeElement.href);
@@ -141,7 +145,7 @@ $(document).ready(function() {
     });
   }
 
-  $editForm.on("submit", function(e) {
+  $editForm.on("submit", function (e) {
     e.preventDefault();
     $.ajax({
       method: "PUT",
@@ -225,7 +229,7 @@ function onSignIn(googleUser) {
 
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function() {
+  auth2.signOut().then(function () {
     console.log("User signed out.");
   });
 }
