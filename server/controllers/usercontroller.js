@@ -1,4 +1,4 @@
-const { user } = require("../models");
+
 
 if (process.env.NODE_ENV === "development") {
   require("dotenv").config();
@@ -15,13 +15,14 @@ class userController {
       email: req.body.email,
       password: req.body.password
     };
-    User.create(objInput).then(result => {
-      let token = jwt.sign(
-        { email: result.email, id: result.id },
-        process.env.secretCode
-      );
-      res.status(201).json(token);
-    });
+    User.create(objInput)
+      .then(result => {
+        console.log('masuk')
+        res.status(201).json(result);
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
 
@@ -38,7 +39,7 @@ class userController {
         if (compare) {
           let token = jwt.sign(
             { email: result.email, id: result.id },
-            process.env.secretCode
+            process.env.secret_key
           );
           res.status(201).json(token);
         } else {
@@ -72,7 +73,7 @@ class userController {
       .then(result => {
         let token = jwt.sign(
           { email: result.email, id: result.id },
-          process.env.secretCode
+          process.env.secret_key
         );
         res.status(200).json(token);
       })
