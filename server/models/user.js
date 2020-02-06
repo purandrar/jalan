@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model{}
   User.init({
     email: DataTypes.STRING,
-    pass: DataTypes.STRING,
+    password: DataTypes.STRING,
     name: DataTypes.STRING,
     age: DataTypes.INTEGER
   },sequelize)
