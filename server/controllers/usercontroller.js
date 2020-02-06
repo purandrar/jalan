@@ -10,15 +10,21 @@ var bcrypt = require("bcryptjs");
 class userController {
   static register(req, res, next) {
     let objInput = {
-      email: req.body.email,
-      password: req.body.password,
       name: req.body.name,
-      age: req.body.age
+      age: req.body.age,
+      email: req.body.email,
+      password: req.body.password
     };
     User.create(objInput).then(result => {
-      res.status(201).json(result);
+      let token = jwt.sign(
+        { email: result.email, id: result.id },
+        process.env.secretCode
+      );
+      res.status(201).json(token);
     });
   }
+
+
   static login(req, res, next) {
     let password = req.body.password;
     let email = req.body.email;
@@ -43,7 +49,8 @@ class userController {
         }
       })
       .catch(err => {
-        next(err);
+        console.log(err)
+        // next(err);
       });
   }
   static googleLogin(req, res, next) {
