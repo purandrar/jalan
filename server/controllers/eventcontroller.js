@@ -9,6 +9,23 @@ const jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 class eventController {
+  static findAll(req, res, next) {
+    Event.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(result => {
+      res
+        .status(201)
+        .json({
+          result: data
+        })
+        .catch(err => {
+          res.send(err);
+        });
+    });
+  }
+
   static addEvent(req, res, next) {
     let objInput = {
       name: req.body.name,
