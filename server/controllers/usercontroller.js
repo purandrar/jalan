@@ -1,5 +1,3 @@
-const { user } = require("../models");
-
 if (process.env.NODE_ENV === "development") {
   require("dotenv").config();
 }
@@ -15,9 +13,14 @@ class userController {
       name: req.body.name,
       age: req.body.age
     };
-    User.create(objInput).then(result => {
-      res.status(201).json(result);
-    });
+    User.create(objInput)
+      .then(result => {
+        console.log(result);
+        res.status(201).json(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   static login(req, res, next) {
     let password = req.body.password;
@@ -32,7 +35,7 @@ class userController {
         if (compare) {
           let token = jwt.sign(
             { email: result.email, id: result.id },
-            process.env.secretCode
+            "ini rahasia"
           );
           res.status(201).json(token);
         } else {
@@ -65,7 +68,7 @@ class userController {
       .then(result => {
         let token = jwt.sign(
           { email: result.email, id: result.id },
-          process.env.secretCode
+          process.env.secret_key
         );
         res.status(200).json(token);
       })

@@ -1,41 +1,54 @@
 const localhost = "http://localhost:3000";
 $(document).ready(function() {
-  var $LoginSubmit = $("#LoginSubmit");
+  var $buttonLogin = $("#buttonLogin");
   var $editForm = $("#editForm");
-  var $registerForm = $("#RegisterForm");
+  var $register = $("#register");
   let $formbody = $("#formbody");
 
-  if (!localStorage.getItem("token")) {
-    $("#login").show();
-    $("#showtableContainer").hide();
-  } else {
-    $($login).hide();
-    showTodo();
-  }
+  //   if (!localStorage.getItem("token")) {
+  //     $("#login").show();
+  //     $("#showtableContainer").hide();
+  //   } else {
+  //     $($login).hide();
+  //     showTodo();
+  //   }
 
-  $registerForm.on("submit", function(e) {
+  var $template = `  <a class="card" href="#LINKkeMODAL"
+                    style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
+                    <div>
+                    <h1>Musik DangDut</h1>
+                    <p>Learn about some of the most common HTML tags…</p>
+                    <div class="date">9 Oct 2017</div>
+                    </div></a>`;
+
+  $register.on("submit", function(e) {
     e.preventDefault();
+    console.log($("#passwordRegis").val());
     $.ajax({
       method: "POST",
       url: `${localhost}/user/register`,
       data: {
-        email: $("#RegisterEmail").val(),
-        password: $("#RegisterPassword").val()
+        email: $("#emailRegis").val(),
+        age: $("#ageRegis").val(),
+        name: $("#nameRegis").val(),
+        password: $("#passwordRegis").val()
       }
     })
       .done(result => {
-        console.log(1234);
-        $("#registerModal").modal("hide");
+        console.log(123);
+        //$("#registerModal").modal("hide");
       })
       .fail(err => {
-        console.log(err, "nnnnnnn");
+        console.log(123);
+        //console.log(err, "nnnnnnn");
       });
   });
 
-  $LoginSubmit.click(function(e) {
+  $buttonLogin.on("submit", function(e) {
     e.preventDefault();
-    var $email = $("#LoginEmail").val();
-    var $password = $("#LoginPassword").val();
+    var $email = $("#emailLogin").val();
+    var $password = $("#passwordLogin").val();
+    console.log($password);
     console.log($email);
     $.ajax({
       method: "POST",
@@ -47,7 +60,6 @@ $(document).ready(function() {
     })
       .done(result => {
         localStorage.setItem("token", result);
-        showTodo(result);
       })
       .fail(err => {
         console.log(err, "nnnnnnn");
