@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
   const { Model } = sequelize.Sequelize
   class Event extends Model { }
@@ -75,12 +75,11 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize, hooks: {
-
     }
   })
   Event.associate = function (models) {
     // associations can be defined here
-    Event.belongsTo(models.User)
+    Event.belongsTo(models.User);
   };
   return Event;
 };
