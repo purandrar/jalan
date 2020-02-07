@@ -14,27 +14,27 @@ $(document).ready(function () {
   // }
 
   showEvent();
-  $addToFav.on("submit", function(e) {
-    e.preventDefault();
+  // $addToFav.on("submit", function(e) {
+  //   e.preventDefault();
 
-    $.ajax({
-      method: "POST",
-      url: `${localhost}/event`,
-      data: {
-        email: $("#emailRegis").val(),
-        age: $("#ageRegis").val(),
-        name: $("#nameRegis").val(),
-        password: $("#passwordRegis").val()
-      }
-    })
-      .done(result => {
-        //$("#registerModal").modal("hide");
-        $('#home').hide()
-      })
-      .fail(err => {
-        //console.log(err, "nnnnnnn");
-      });
-  });
+  //   $.ajax({
+  //     method: "POST",
+  //     url: `${localhost}/event`,
+  //     data: {
+  //       email: $("#emailRegis").val(),
+  //       age: $("#ageRegis").val(),
+  //       name: $("#nameRegis").val(),
+  //       password: $("#passwordRegis").val()
+  //     }
+  //   })
+  //     .done(result => {
+  //       //$("#registerModal").modal("hide");
+  //       $('#home').hide()
+  //     })
+  //     .fail(err => {
+  //       //console.log(err, "nnnnnnn");
+  //     });
+  // });
   $registerForm.on("submit", function(e) {
     e.preventDefault();
     console.log(12);
@@ -101,10 +101,11 @@ $(document).ready(function () {
     // $formCard.empty();
     let template = ``;
     for (let i = 0; i < 6; i++) {
-      template = `<div class="card-grid-space">
-      <a class="card" data-toggle="modal" data-target ="#updateModal" href="https://app.ticketmaster.com/discovery/v2/events/${data[i].id}.json?apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY"
+      console.log(data[i].id)
+      template = `<div class="card-grid-space"  >
+      <a id = "gambar" role = "button" class="card" href="https://app.ticketmaster.com/discovery/v2/events/${data[i].id}.json?apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY"
         style="--bg-img: url('${data[i].images[1].url}')">
-      <div>
+      <div  >
           <h1 id ="title">${data[i].name}</h1>
           <div class="date">${data[i].dates.start.localDate}</div>
       </div>
@@ -114,6 +115,49 @@ $(document).ready(function () {
       $formCard.append(template);
     }
   }
+
+  $(document).on("click", ".card", function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: "GET",
+      url: $(this).attr("href"),
+      headers: {
+        token: localStorage.token
+      }
+    }).done(result => {
+      console.log(result)
+      const content = `
+      <div class="wrapper" > 
+      <div class="product-img">
+           <img src="${result.images[1].url}" height="420" width="300">
+      </div>
+      <div class="product-info">
+           <div class="product-text">
+                <h1>${result.name}</h1>
+           </div>
+
+      </div>
+ </div>
+
+ <table class="table">
+      <thead>
+           <tr>
+                <th scope="col">Tanggal</th>
+                <th scope="col">Description</th>
+           </tr>
+      </thead>
+      <tbody>
+           <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+           </tr>
+      </tbody>
+ </table>
+      `
+      $(".modal-body").html(content);
+      $("#eventDetail").modal();
+    });
+  })
 
   var Todo = $("#addButton");
   Todo.on("submit", function(e) {
@@ -140,17 +184,19 @@ $(document).ready(function () {
     });
   }
 
-  $(this).click(function(e) {
-    if (document.activeElement.id === "deleteButton") {
-      e.preventDefault();
-      deleteTodo(document.activeElement.href);
-    } else if (document.activeElement.id === "gambar") {
-      e.preventDefault();
-      gedDetailEvent(document.activeElement.href);
-    }
-  });
+  // $(this).on('click',function(e) {
+  //   console.log('masuk')
+  // if (document.activeElement.id === "gambar") {
+  //     e.preventDefault();
+  //     console.log('masuk')
+      
+  //     gedDetailEvent(document.activeElement.href);
+  //   }
+  // });
 
   function gedDetailEvent(url) {
+    console.log('masuk')
+    console.log(url)
     $.ajax({
       method: "GET",
       url: url,
