@@ -29,6 +29,7 @@ $(document).ready(function () {
     })
       .done(result => {
         //$("#registerModal").modal("hide");
+        $('#home').hide()
       })
       .fail(err => {
         //console.log(err, "nnnnnnn");
@@ -71,6 +72,7 @@ $(document).ready(function () {
       .done(result => {
         localStorage.setItem("token", result);
         showEvent(result);
+        $('home').hide()
       })
       .fail(err => {
         console.log(err, "nnnnnnn");
