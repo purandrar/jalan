@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV === "development") {
-  require("dotenv").config();
-}
+
+
+
 const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
@@ -8,20 +8,22 @@ var bcrypt = require("bcryptjs");
 class userController {
   static register(req, res, next) {
     let objInput = {
-      email: req.body.email,
-      password: req.body.password,
       name: req.body.name,
-      age: req.body.age
+      age: req.body.age,
+      email: req.body.email,
+      password: req.body.password
     };
     User.create(objInput)
       .then(result => {
-        console.log(result);
+        console.log('masuk')
         res.status(201).json(result);
       })
       .catch(err => {
-        console.log(err);
-      });
+        console.log(err)
+      })
   }
+
+
   static login(req, res, next) {
     let password = req.body.password;
     let email = req.body.email;
@@ -35,7 +37,7 @@ class userController {
         if (compare) {
           let token = jwt.sign(
             { email: result.email, id: result.id },
-            "ini rahasia"
+            process.env.secret_key
           );
           res.status(201).json(token);
         } else {
@@ -46,7 +48,8 @@ class userController {
         }
       })
       .catch(err => {
-        next(err);
+        console.log(err)
+        // next(err);
       });
   }
   static googleLogin(req, res, next) {

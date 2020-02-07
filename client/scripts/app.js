@@ -1,4 +1,4 @@
-const localhost = "http://localhost:3000";
+var localhost = "http://localhost:3000";
 $(document).ready(function() {
   var $buttonLogin = $("#buttonLogin");
   var $editForm = $("#editForm");
@@ -80,8 +80,7 @@ $(document).ready(function() {
   function showEvent() {
     $.ajax({
       type: "GET",
-      url:
-        "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY",
+      url: `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY`,
       dataType: "json",
       success: function(json) {
         // Parse the response.
