@@ -14,29 +14,10 @@ $(document).ready(function() {
   // }
 
   showEvent();
-  $addToFav.on("submit", function(e) {
-    e.preventDefault();
 
-    $.ajax({
-      method: "POST",
-      url: `${localhost}/event`,
-      data: {
-        email: $("#emailRegis").val(),
-        age: $("#ageRegis").val(),
-        name: $("#nameRegis").val(),
-        password: $("#passwordRegis").val()
-      }
-    })
-      .done(result => {
-        //$("#registerModal").modal("hide");
-      })
-      .fail(err => {
-        //console.log(err, "nnnnnnn");
-      });
-  });
   $registerForm.on("submit", function(e) {
     e.preventDefault();
-    console.log(12);
+    console.log(123);
     $.ajax({
       method: "POST",
       url: `${localhost}/user/register`,
@@ -60,6 +41,7 @@ $(document).ready(function() {
     e.preventDefault();
     var $email = $("#emailLogin").val();
     var $password = $("#passwordLogin").val();
+
     $.ajax({
       method: "POST",
       url: `${localhost}/user/login`,
@@ -70,6 +52,7 @@ $(document).ready(function() {
     })
       .done(result => {
         localStorage.setItem("token", result);
+        console.log($email);
         showEvent(result);
       })
       .fail(err => {
