@@ -1,5 +1,5 @@
-'use strict';
-let bcrypt = require('bcryptjs');
+"use strict";
+let bcrypt = require("bcryptjs");
 module.exports = (sequelize, DataTypes) => {
 
   const { Model } = sequelize.Sequelize
@@ -72,7 +72,7 @@ module.exports = (sequelize, DataTypes) => {
   })
   User.associate = function (models) {
     // associations can be defined here
-    User.hasMany(models.Event)
+    User.hasMany(models.Event);
   };
   return User;
 };

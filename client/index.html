@@ -1,422 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Jalan-jalan</title>
 
-<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="team" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta
+      name="google-signin-client_id"
+      content="YOUR_CLIENT_ID.apps.googleusercontent.com"
+    />
 
-     <title>Jalan-jalan</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-     <meta name="description" content="">
-     <meta name="keywords" content="">
-     <meta name="team" content="">
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/tooplate-style.css" />
+    <link rel="stylesheet" href="styles/card.css" />
+  </head>
 
-     <link rel="stylesheet" href="css/bootstrap.min.css">
-     <link rel="stylesheet" href="css/owl.carousel.css">
-     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-     <link rel="stylesheet" href="css/font-awesome.min.css">
-     <script src="https://apis.google.com/js/platform.js" async defer></script>
-     <script src="./scripts/app.js"></script>
+  <body>
+    <!-- PRE LOADER -->
+    <section class="preloader">
+      <div class="spinner">
+        <span class="spinner-rotate"></span>
+      </div>
+    </section>
 
-     <!-- MAIN CSS -->
-     <link rel="stylesheet" href="css/tooplate-style.css">
-     <link rel="stylesheet" href="styles/card.css">
-     <link rel="stylesheet" href="styles/detailEvent.css">
+    <!-- MENU -->
+    <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+          >
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+          </button>
 
+          <!-- lOGO TEXT HERE -->
+          <a href="index.html" class="navbar-brand">Pur & Friends</a>
+        </div>
 
-</head>
+        <!-- MENU LINKS -->
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#home" class="smoothScroll">Home</a></li>
+            <li><a href="#feature" class="smoothScroll">Event</a></li>
+            <li><a href="#about" class="smoothScroll">Transport</a></li>
+            <!-- <li><a href="#pricing" class="smoothScroll">Pricing</a></li>
+                         <li><a href="#contact" class="smoothScroll">Contact</a></li> -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li><a href="#">GoogleSign</span></a></li> -->
+            <li>
+              <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<body>
-
-     <!-- PRE LOADER -->
-     <section class="preloader">
-          <div class="spinner">
-
-               <span class="spinner-rotate"></span>
-
+    <!-- FEATURE -->
+    <section id="home" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <!-- ini form login dan signin -->
+      <section class="forms-section" style="margin: 0 auto; padding: 0;">
+        <div class="forms">
+          <div class="form-wrapper is-active">
+            <button type="button" class="switcher switcher-login">
+              Login
+              <span class="underline"></span>
+            </button>
+            <form class="form form-login" id="buttonLogin">
+              <fieldset>
+                <legend>
+                  Please, enter your email and password for login.
+                </legend>
+                <div class="input-block">
+                  <label for="login-email">E-mail</label>
+                  <input type="email" required id="emailLogin" />
+                </div>
+                <div class="input-block">
+                  <label for="login-password">Password</label>
+                  <input type="password" required id="passwordLogin" />
+                </div>
+              </fieldset>
+              <button type="submit" class="btn-login">
+                Login
+              </button>
+            </form>
           </div>
-     </section>
-
-
-     <!-- MENU -->
-     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
-          <div class="container">
-
-               <div class="navbar-header">
-                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                    </button>
-
-                    <!-- lOGO TEXT HERE -->
-                    <a href="index.html" class="navbar-brand">Pur & Friends</a>
-               </div>
-
-               <!-- MENU LINKS -->
-               <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                         <li><a href="#home" class="smoothScroll">Home</a></li>
-                         <li><a href="#event" class="smoothScroll">Event</a></li>
-                         <li><a href="#mylist" class="smoothScroll">My List Event</a></li>
-                         <li><a href="#team" class="smoothScroll">Team</a></li>
-                         <!-- <li><a href="#contact" class="smoothScroll">Contact</a></li> -->
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                         <!-- <li><a href="#">GoogleSign</span></a></li> -->
-                         <li>
-                              <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                         </li>
-                    </ul>
-               </div>
-
+          <div class="form-wrapper">
+            <button type="button" class="switcher switcher-signup">
+              Sign Up
+              <span class="underline"></span>
+            </button>
+            <form class="form form-signup" id="register">
+              <fieldset>
+                <legend>
+                  Please, enter your email, password and password confirmation
+                  for sign up.
+                </legend>
+                <div class="input-block">
+                  <label for="signup-password">Name</label>
+                  <input type="text" required id="nameRegis" />
+                </div>
+                <div class="input-block">
+                  <label for="signup-password">Age</label>
+                  <input type="text" required id="ageRegis" />
+                </div>
+                <div class="input-block">
+                  <label for="signup-email">E-mail</label>
+                  <input type="email" required id="emailRegis" />
+                </div>
+                <div class="input-block">
+                  <label for="signup-password-confirm">password</label>
+                  <input type="password" required id="passwordRegis" />
+                </div>
+              </fieldset>
+              <button type="submit" class="btn-signup">
+                Continue
+              </button>
+            </form>
           </div>
-     </section>
+        </div>
+      </section>
+    </section>
 
+    <!-- FEATURE -->
+    <section id="feature" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6 col-sm-12">
+            <div class="section-title" style="text-align: center;">
+              <h2>EVENT</h2>
+            </div>
+          </div>
+          <section class="cards-wrapper">
+            <!-- ini yang di looping -->
+          
+            <!-- sampe sini -->
 
-     <!-- FEATURE -->
-     <section id="home" data-stellar-background-ratio="0.5" id="formLoginRegister">
-          <div class="overlay"></div>
-          <!-- ini form login dan signin -->
-          <section class="forms-section" style="margin: 0 auto; padding: 0;">
-               <div class="forms">
-                    <div class="form-wrapper is-active">
-                         <button type="button" class="switcher switcher-login">
-                              Login
-                              <span class="underline"></span>
-                         </button>
-                         <form class="form form-login">
-                              <fieldset>
-                                   <legend>Please, enter your email and password for login.</legend>
-                                   <div class="input-block">
-                                        <label for="login-email">E-mail</label>
-                                        <input id="login-email" type="email" required id="LoginEmail">
-                                   </div>
-                                   <div class="input-block">
-                                        <label for="login-password">Password</label>
-                                        <input id="login-password" type="password" required id="LoginPassword">
-                                   </div>
-                              </fieldset>
-                              <button type="submit" class="btn-login" id="buttonLogin">Login</button>
-                         </form>
-                    </div>
-                    <div class="form-wrapper">
-                         <button type="button" class="switcher switcher-signup">
-                              Sign Up
-                              <span class="underline"></span>
-                         </button>
-                         <form class="form form-signup" id="RegisterForm">
-                              <fieldset>
-                                   <legend>Please, enter your email, password and password confirmation for sign up.
-                                   </legend>
-                                   <div class="input-block">
-                                        <label for="signup-password">Name</label>
-                                        <input id="signup-password" type="text" required id="RegisterName">
-                                   </div>
-                                   <div class="input-block">
-                                        <label for="signup-password">Age</label>
-                                        <input type="text" required id="RegisterAge">
-                                   </div>
-                                   <div class="input-block">
-                                        <label for="signup-email">E-mail</label>
-                                        <input id="signup-email" type="email" required id="RegisterEmail">
-                                   </div>
-                                   <div class="input-block">
-                                        <label for="signup-password-confirm">password</label>
-                                        <input id="signup-password-confirm" type="password" required
-                                             id="RegisterPassword">
-                                   </div>
-                              </fieldset>
-                              <button type="submit" class="btn-signup" id="register">Continue</button>
-                         </form>
-                    </div>
-               </div>
+            
+
+         
+            <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
           </section>
-     </section>
+        </div>
+      </div>
+    </section>
 
-
-     <!-- FEATURE SHOW DARI API -->
-     <section id="event eventjq" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-                    <div class="col-md-offset-3 col-md-6 col-sm-12">
-                         <div class="section-title" style="text-align: center;">
-                              <h2>EVENT</h2>
-
-                         </div>
-                    </div>
-                    <section class="cards-wrapper">
-
-                         <!-- ini yang di looping -->
-                         
-                         <!-- sampe sini -->
-
-                         
-                         <div class="card-grid-space">
-                              <a class="card" href="#LINKkeMODAL"
-                                   style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                                   <div>
-                                        <h1>Musik DangDut</h1>
-                                        <p>Learn about some of the most common HTML tags…</p>
-                                        <div class="date">9 Oct 2017</div>
-                                   </div>
-                              </a>
-                         </div>
-
-
-                         <div class="card-grid-space">
-
-                              <a class="card" href="#LINKkeMODAL"
-                                   style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                                   <div>
-                                        <h1>Links, images and about file paths</h1>
-                                        <p>Learn how to use links and images along with file paths…</p>
-                                        <div class="date">14 Oct 2017</div>
-                                   </div>
-                              </a>
-                         </div>
-                         <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
-                    </section>
-               </div>
+    <!-- ABOUT -->
+    <section id="about" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6 col-sm-12">
+            <div class="section-title">
+              <h2 style="color: black;">Professional Team</h2>
+            </div>
           </div>
-     </section>
 
-
-
-     <!-- FEATURE SHOW DARI DataBase -->
-     <section id="mylist" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-                    <div class="col-md-offset-3 col-md-6 col-sm-12">
-                         <div class="section-title" style="text-align: center;">
-                              <h2> LIST EVENT</h2>
-
-                         </div>
-                    </div>
-                    <section class="cards-wrappers">
-
-                         <!-- ini yang di looping -->
-                         <div class="card-grid-space">
-                              <a class="card" href="#LINKkeMODAL"
-                                   style="--bg-img: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                                   <!-- ini link ke image event nanti -->
-                                   <div>
-                                        <!-- ini judul acara -->
-                                        <h1>ACARA PESTA PARTY</h1>
-                                        <!-- ini penggalan acara -->
-                                        <p>Festival hore hore hore cantik</p>
-                                        <!-- ini tanggal acara -->
-                                        <div class="date">6 Oct 2017</div>
-                                   </div>
-                              </a>
-                         </div>
-                         <!-- sampe sini -->
-
-
-                         <div class="card-grid-space">
-                              <a class="card" href="#LINKkeMODAL"
-                                   style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                                   <div>
-                                        <h1>Musik DangDut</h1>
-                                        <p>Learn about some of the most common HTML tags…</p>
-                                        <div class="date">9 Oct 2017</div>
-                                   </div>
-                              </a>
-                         </div>
-
-                         <div class="card-grid-space">
-
-                              <a class="card" href="#LINKkeMODAL"
-                                   style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                                   <div>
-                                        <h1>Links, images and about file paths</h1>
-                                        <p>Learn how to use links and images along with file paths…</p>
-                                        <div class="date">14 Oct 2017</div>
-                                   </div>
-                              </a>
-                         </div>
-                         <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
-                    </section>
-               </div>
+          <div class="col-md-4 col-sm-4">
+            <div class="team-thumb">
+              <img
+                src="images/d.jpg"
+                class="img-responsive"
+                alt="Andrew Orange"
+              />
+              <div class="team-info team-thumb-up">
+                <h2>Dimas Wicaksono</h2>
+                <small>FrontEnd Dev</small>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod
+                  tempor incididunt ut labore et dolore magna.
+                </p>
+              </div>
+            </div>
           </div>
-     </section>
 
-
-     <!-- INI untuk modal -->
-     <section id="mylist" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div>
-                    <div class="wrapper">
-                         <div class="product-img">
-                              <img src="http://bit.ly/2tMBBTd" height="420" width="327">
-                         </div>
-                         <div class="product-info">
-                              <div class="product-text">
-                                   <h1>Harvest Vase</h1>
-                                   <p>Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br>
-                                        functional objects. The surfaces<br> appear to be sliced and pulled aside,<br>
-                                        allowing room for growth. </p>
-                              </div>
-
-                         </div>
-                    </div>
-
-                    <table class="table">
-                         <thead>
-                              <tr>
-                                   <th scope="col">Tanggal</th>
-                                   <th scope="col">Description</th>
-                              </tr>
-                         </thead>
-                         <tbody>
-                              <tr>
-                                   <td>Mark</td>
-                                   <td>Otto</td>
-                              </tr>
-                         </tbody>
-                    </table>
-               </div>
+          <div class="col-md-4 col-sm-4">
+            <div class="team-thumb">
+              <div class="team-info team-thumb-down">
+                <h2>Vindo</h2>
+                <small>Senior Manager</small>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod
+                  tempor incididunt ut labore et dolore magna.
+                </p>
+              </div>
+              <img
+                src="images/vindo.jpg"
+                class="img-responsive"
+                alt="Catherine Soft"
+              />
+            </div>
           </div>
-     </section>
-     <!-- sampai sini modal -->
 
-     <!-- ABOUT -->
-     <section id="team" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-offset-3 col-md-6 col-sm-12">
-                         <div class="section-title">
-                              <h2 style="color: black;">Professional Team</h2>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="team-thumb">
-                              <img src="images/d.jpg" class="img-responsive" alt="Andrew Orange">
-                              <div class="team-info team-thumb-up">
-                                   <h2>Dimas Wicaksono</h2>
-                                   <small>Suka-suka klienlah</small>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod tempor incididunt ut
-                                        labore et dolore magna.</p>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="team-thumb">
-                              <div class="team-info team-thumb-down">
-                                   <h2>Vindo</h2>
-                                   <small>Senior Manager</small>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod tempor incididunt ut
-                                        labore et dolore magna.</p>
-                              </div>
-                              <img src="images/vindo.jpg" class="img-responsive" alt="Catherine Soft">
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="team-thumb">
-                              <img src="images/pur.jpg" class="img-responsive" alt="Jack Wilson">
-                              <div class="team-info team-thumb-up">
-                                   <h2>Andra</h2>
-                                   <small>CEO / Founder</small>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod tempor incididunt ut
-                                        labore et dolore magna.</p>
-                              </div>
-                         </div>
-                    </div>
-
-               </div>
+          <div class="col-md-4 col-sm-4">
+            <div class="team-thumb">
+              <img
+                src="images/pur.jpg"
+                class="img-responsive"
+                alt="Jack Wilson"
+              />
+              <div class="team-info team-thumb-up">
+                <h2>Andra</h2>
+                <small>CEO / Founder</small>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod
+                  tempor incididunt ut labore et dolore magna.
+                </p>
+              </div>
+            </div>
           </div>
-     </section>
+        </div>
+      </div>
+    </section>
 
+    <!-- TESTIMONIAL -->
+    <section id="testimonial" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row"></div>
+      </div>
+    </section>
 
+    <!-- CONTACT -->
+    <section id="contact" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-offset-1 col-md-10 col-sm-12">
+            <form id="contact-form" role="form" action="" method="post">
+              <div class="section-title">
+                <h1>Say hello to us</h1>
+              </div>
 
-
-
-
-
-     <!-- CONTACT -->
-     <section id="contact" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-offset-1 col-md-10 col-sm-12">
-                         <form id="contact-form" role="form" action="" method="post">
-                              <div class="section-title">
-                                   <h1>Say hello to us</h1>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <input type="text" class="form-control" placeholder="Full name" name="name"
-                                        required="">
-                              </div>
-                              <div class="col-md-4 col-sm-4">
-                                   <input type="email" class="form-control" placeholder="Email address" name="email"
-                                        required="">
-                              </div>
-                              <div class="col-md-4 col-sm-4">
-                                   <input type="submit" class="form-control" name="send message" value="Send Message">
-                              </div>
-                              <div class="col-md-12 col-sm-12">
-                                   <textarea class="form-control" rows="8" placeholder="Your message" name="message"
-                                        required=""></textarea>
-                              </div>
-                         </form>
-                    </div>
-
-               </div>
+              <div class="col-md-4 col-sm-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Full name"
+                  name="name"
+                  required=""
+                />
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email address"
+                  name="email"
+                  required=""
+                />
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <input
+                  type="submit"
+                  class="form-control"
+                  name="send message"
+                  value="Send Message"
+                />
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <textarea
+                  class="form-control"
+                  rows="8"
+                  placeholder="Your message"
+                  name="message"
+                  required=""
+                ></textarea>
+              </div>
+            </form>
           </div>
-     </section>
+        </div>
+      </div>
+    </section>
 
+    <!-- FOOTER -->
+    <footer id="footer" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row">
+          <div class="copyright-text col-md-12 col-sm-12">
+            <div class="col-md-6 col-sm-6">
+              <p>
+                Copyright &copy; 2020
+                <!-- <a rel="nofollow" href="http://tooplate.com">Tooplate</a></p> -->
+              </p>
+            </div>
 
-     <!-- FOOTER -->
-     <footer id="footer" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="copyright-text col-md-12 col-sm-12">
-                         <div class="col-md-6 col-sm-6">
-                              <p>Copyright &copy; 2020
-                                   <!-- <a rel="nofollow" href="http://tooplate.com">Tooplate</a></p> -->
-                         </div>
-
-                         <div class="col-md-6 col-sm-6">
-                              <ul class="social-icon">
-                                   <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                                   <li><a href="#" class="fa fa-twitter"></a></li>
-                                   <li><a href="#" class="fa fa-instagram"></a></li>
-                              </ul>
-                         </div>
-                    </div>
-
-               </div>
+            <div class="col-md-6 col-sm-6">
+              <ul class="social-icon">
+                <li>
+                  <a
+                    href="#"
+                    class="fa fa-facebook-square"
+                    attr="facebook icon"
+                  ></a>
+                </li>
+                <li><a href="#" class="fa fa-twitter"></a></li>
+                <li><a href="#" class="fa fa-instagram"></a></li>
+              </ul>
+            </div>
           </div>
-     </footer>
+        </div>
+      </div>
+    </footer>
 
+    <!-- SCRIPTS -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+      const switchers = [...document.querySelectorAll(".switcher")];
 
-     <!-- SCRIPTS -->
-     <script src="js/jquery.js"></script>
-     <script src="js/bootstrap.min.js"></script>
-     <script src="js/jquery.stellar.min.js"></script>
-     <script src="js/owl.carousel.min.js"></script>
-     <script src="js/smoothscroll.js"></script>
-     <script src="js/custom.js"></script>
-     <script>
-          const switchers = [...document.querySelectorAll('.switcher')]
-
-          switchers.forEach(item => {
-               item.addEventListener('click', function () {
-                    switchers.forEach(item => item.parentElement.classList.remove('is-active'))
-                    this.parentElement.classList.add('is-active')
-               })
-          })
-
-     </script>
-     <script src="./scripts/app.js"></script>
-</body>
-
+      switchers.forEach(item => {
+        item.addEventListener("click", function() {
+          switchers.forEach(item =>
+            item.parentElement.classList.remove("is-active")
+          );
+          this.parentElement.classList.add("is-active");
+        });
+      });
+    </script>
+    <script src="./scripts/app.js"></script>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </body>
 </html>

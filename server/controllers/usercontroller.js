@@ -1,8 +1,6 @@
 
 
-if (process.env.NODE_ENV === "development") {
-  require("dotenv").config();
-}
+
 const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
