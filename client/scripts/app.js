@@ -1,10 +1,11 @@
 var localhost = "http://localhost:3000";
-$(document).ready(function () {
+$(document).ready(function() {
   var $buttonLogin = $("#buttonLogin");
   var $editForm = $("#editForm");
   var $registerForm = $("#register");
   let $formCard = $(".cards-wrapper");
   let $addToFav;
+  let $deleteToFav;
   // if (!localStorage.getItem("token")) {
   //   $("#login").show();
   //   $("#showtableContainer").hide();
@@ -14,30 +15,22 @@ $(document).ready(function () {
   // }
 
   showEvent();
-  // $addToFav.on("submit", function(e) {
-  //   e.preventDefault();
-
-  //   $.ajax({
-  //     method: "POST",
-  //     url: `${localhost}/event`,
-  //     data: {
-  //       email: $("#emailRegis").val(),
-  //       age: $("#ageRegis").val(),
-  //       name: $("#nameRegis").val(),
-  //       password: $("#passwordRegis").val()
-  //     }
-  //   })
-  //     .done(result => {
-  //       //$("#registerModal").modal("hide");
-  //       $('#home').hide()
-  //     })
-  //     .fail(err => {
-  //       //console.log(err, "nnnnnnn");
-  //     });
-  // });
+  $deleteFromFav.on("submit", function(e) {
+    return $.ajax({
+      method: "DELETE",
+      url: url,
+      headers: {
+        token: localStorage.token
+      }
+    })
+      .done(data => {})
+      .fail(data => {
+        console.log(data);
+      });
+  });
   $registerForm.on("submit", function(e) {
     e.preventDefault();
-    console.log(12);
+    console.log(123);
     $.ajax({
       method: "POST",
       url: `${localhost}/user/register`,
@@ -57,10 +50,11 @@ $(document).ready(function () {
       });
   });
 
-  $buttonLogin.on("submit", function (e) {
+  $buttonLogin.on("submit", function(e) {
     e.preventDefault();
     var $email = $("#emailLogin").val();
     var $password = $("#passwordLogin").val();
+
     $.ajax({
       method: "POST",
       url: `${localhost}/user/login`,
@@ -71,6 +65,7 @@ $(document).ready(function () {
     })
       .done(result => {
         localStorage.setItem("token", result);
+        console.log($email);
         showEvent(result);
         $('home').hide()
       })
@@ -277,7 +272,7 @@ function onSignIn(googleUser) {
   var id_token = googleUser.getAuthResponse().id_token;
   $.ajax({
     method: "POST",
-    url: `${localhost}/user/googleLogin`,
+    url: `${localhost}/googleLogin`,
     data: {
       token: id_token
     }
@@ -286,6 +281,7 @@ function onSignIn(googleUser) {
       localStorage.setItem("token", data);
     })
     .fail(err => {
+      console.log(12);
       console.log(err);
     });
 }

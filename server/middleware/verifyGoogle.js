@@ -1,14 +1,15 @@
 const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client(
-  "162472941446-3dtsu47npjn8ud5pbspv2s8ufb5db80n.apps.googleusercontent.com"
+  "624760328426-qn0q7gfv0qe09gqbh8mg8e99mfr6blsv.apps.googleusercontent.com"
 );
 
 module.exports = function(req, res, next) {
+  console.log(req.body.token);
   client
     .verifyIdToken({
       idToken: req.body.token,
       audience:
-        "162472941446-3dtsu47npjn8ud5pbspv2s8ufb5db80n.apps.googleusercontent.com"
+        "624760328426-qn0q7gfv0qe09gqbh8mg8e99mfr6blsv.apps.googleusercontent.com"
     })
     .then(verified => {
       req.payload = verified.getPayload();
