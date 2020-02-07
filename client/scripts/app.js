@@ -1,5 +1,5 @@
 var localhost = "http://localhost:3000";
-$(document).ready(function() {
+$(document).ready(function () {
   var $buttonLogin = $("#buttonLogin");
   var $editForm = $("#editForm");
   var $registerForm = $("#register");
@@ -15,7 +15,7 @@ $(document).ready(function() {
   // }
 
   showEvent();
-  $deleteFromFav.on("submit", function(e) {
+  $deleteFromFav.on("submit", function (e) {
     return $.ajax({
       method: "DELETE",
       url: url,
@@ -23,12 +23,12 @@ $(document).ready(function() {
         token: localStorage.token
       }
     })
-      .done(data => {})
+      .done(data => { })
       .fail(data => {
         console.log(data);
       });
   });
-  $registerForm.on("submit", function(e) {
+  $registerForm.on("submit", function (e) {
     e.preventDefault();
     console.log(123);
     $.ajax({
@@ -50,7 +50,7 @@ $(document).ready(function() {
       });
   });
 
-  $buttonLogin.on("submit", function(e) {
+  $buttonLogin.on("submit", function (e) {
     e.preventDefault();
     var $email = $("#emailLogin").val();
     var $password = $("#passwordLogin").val();
@@ -98,12 +98,12 @@ $(document).ready(function() {
     for (let i = 0; i < 6; i++) {
       console.log(data[i].id)
       template = `<div class="card-grid-space"  >
-      <a id = "gambar" role = "button" class="card" href="https://app.ticketmaster.com/discovery/v2/events/${data[i].id}.json?apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY"
+      <a id = "gambar" class="card" href="https://app.ticketmaster.com/discovery/v2/events/${data[i].id}.json?apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY"
         style="--bg-img: url('${data[i].images[1].url}')">
-      <div  >
-          <h1 id ="title">${data[i].name}</h1>
-          <div class="date">${data[i].dates.start.localDate}</div>
-      </div>
+        <div>
+            <h1 id ="title">${data[i].name}</h1>
+            <div class="date">${data[i].dates.start.localDate}</div>
+        </div>
       </a>
     </div>`
 
@@ -113,6 +113,7 @@ $(document).ready(function() {
 
   $(document).on("click", ".card", function(e) {
     e.preventDefault();
+    // alert('hahaha')
     $.ajax({
       method: "GET",
       url: $(this).attr("href"),
@@ -149,13 +150,13 @@ $(document).ready(function() {
       </tbody>
  </table>
       `
-      $(".modal-body").html(content);
+      $(".modal-content").html(content);
       $("#eventDetail").modal();
     });
   })
 
   var Todo = $("#addButton");
-  Todo.on("submit", function(e) {
+  Todo.on("submit", function (e) {
     e.preventDefault();
     let title = $("#AddTitle").val();
     let description = $("#AddDescription").val();
@@ -203,7 +204,7 @@ $(document).ready(function() {
     });
   }
 
-  $editForm.on("submit", function(e) {
+  $editForm.on("submit", function (e) {
     e.preventDefault();
     $.ajax({
       method: "PUT",
@@ -288,7 +289,7 @@ function onSignIn(googleUser) {
 
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function() {
+  auth2.signOut().then(function () {
     console.log("User signed out.");
   });
 }
