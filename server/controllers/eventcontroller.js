@@ -30,7 +30,8 @@ class eventController {
       date: req.body.date,
       description: req.body.description,
       location: req.body.location,
-      userId: req.user.id
+      EventId:req.body.EventId,
+      UserId: req.user.id
     };
     Event.create(objInput).then(result => {
       res.status(201).json(result);

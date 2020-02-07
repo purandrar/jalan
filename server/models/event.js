@@ -73,6 +73,9 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    EventId:{
+      type:DataTypes.STRING
+    }
   }, {
     sequelize, hooks: {
     }
