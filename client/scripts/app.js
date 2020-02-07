@@ -233,8 +233,7 @@ function onSignIn(googleUser) {
       localStorage.setItem("token", data);
     })
     .fail(err => {
-      console.log(12);
-      console.log(err);
+      console.log(123);
     });
 }
 
