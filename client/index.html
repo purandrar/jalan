@@ -24,6 +24,8 @@
      <link rel="stylesheet" href="css/tooplate-style.css">
      <link rel="stylesheet" href="styles/card.css">
      <link rel="stylesheet" href="styles/detailEvent.css">
+     <link rel="stylesheet" href="styles/cardprofile.scss">
+
 
 
 </head>
@@ -69,6 +71,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                          <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+                         <li><a href="#" data-toggle="modal" data-target="#modalProfile">Profile</span></a></li>
                          <li><a href="#">Logout</span></a></li>
                          <!-- <li>
                               <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -153,10 +156,6 @@
                          </div>
                     </div>
                     <section class="cards-wrapper">
-
-
-
-
                     </section>
                </div>
           </div>
@@ -181,6 +180,42 @@
           </div>
      </section>
 
+     <!-- Button trigger modal -->
+     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProfile">
+          profile
+     </button> -->
+
+     <!-- Modal -->
+     <section>
+          <div class="modal fade" id="modalProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+               aria-hidden="true">
+               <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                         <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                              </button>
+                         </div>
+                         <div class="modal-body">
+                              <form>
+                                   <div class="form-group">
+                                        <label for="exampleFormControlInput1">Name</label>
+                                        <input type="text" class="form-control">
+                                        <div class="form-group">
+                                             <label for="exampleFormControlInput1">Age</label>
+                                             <input type="text" class="form-control" placeholder="age">
+                                        </div>
+                              </form>
+                         </div>
+                         <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
 
      <!-- INI untuk modal -->
      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large
@@ -191,7 +226,7 @@
           <div class="modal-dialog modal-xl" role="document">
                <div class="modal-content">
 
-                    <!-- <div class="wrapper"> -->
+
                     <div class="product-img">
                          <img src="http://bit.ly/2tMBBTd">
                     </div>
@@ -206,7 +241,7 @@
                          </div>
 
                     </div>
-                    <!-- </div> -->
+
 
                     <table class="table">
                          <thead>
