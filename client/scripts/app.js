@@ -2,31 +2,41 @@ var localhost = "http://localhost:3000";
 $(document).ready(function () {
   var $buttonLogin = $("#buttonLogin");
   var $editForm = $("#editForm");
-  var $register = $("#RegisterForm");
-  var $formbody = $("#formbody");
-  var $formCard = $('.cards-wrapper')
+  var $registerForm = $("#register");
+  let $formCard = $(".cards-wrapper");
+  let $addToFav;
+  // if (!localStorage.getItem("token")) {
+  //   $("#login").show();
+  //   $("#showtableContainer").hide();
+  // } else {
+  //   $($login).hide();
+  //   showEvent();
+  // }
 
-  //   if (!localStorage.getItem("token")) {
-  //     $("#login").show();
-  //     $("#showtableContainer").hide();
-  //   } else {
-  //     $($login).hide();
-  //     showTodo();
-  //   }
-
-  showEvent()
-
-  var $template = `  <a class="card" href="#LINKkeMODAL"
-                    style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                    <div>
-                    <h1>Musik DangDut</h1>
-                    <p>Learn about some of the most common HTML tags…</p>
-                    <div class="date">9 Oct 2017</div>
-                    </div></a>`;
-
-  $register.on("submit", function (e) {
+  showEvent();
+  $addToFav.on("submit", function(e) {
     e.preventDefault();
-    console.log($("#passwordRegis").val());
+
+    $.ajax({
+      method: "POST",
+      url: `${localhost}/event`,
+      data: {
+        email: $("#emailRegis").val(),
+        age: $("#ageRegis").val(),
+        name: $("#nameRegis").val(),
+        password: $("#passwordRegis").val()
+      }
+    })
+      .done(result => {
+        //$("#registerModal").modal("hide");
+      })
+      .fail(err => {
+        //console.log(err, "nnnnnnn");
+      });
+  });
+  $registerForm.on("submit", function(e) {
+    e.preventDefault();
+    console.log(12);
     $.ajax({
       method: "POST",
       url: `${localhost}/user/register`,
@@ -38,11 +48,10 @@ $(document).ready(function () {
       }
     })
       .done(result => {
-        console.log(123);
         //$("#registerModal").modal("hide");
+        console.log(123);
       })
       .fail(err => {
-        console.log(123);
         //console.log(err, "nnnnnnn");
       });
   });
@@ -51,8 +60,6 @@ $(document).ready(function () {
     e.preventDefault();
     var $email = $("#emailLogin").val();
     var $password = $("#passwordLogin").val();
-    console.log($password);
-    console.log($email);
     $.ajax({
       method: "POST",
       url: `${localhost}/user/login`,
@@ -69,7 +76,6 @@ $(document).ready(function () {
         console.log(err, "nnnnnnn");
       });
   });
-
 
   function showEvent() {
     $.ajax({
@@ -89,10 +95,9 @@ $(document).ready(function () {
     });
   }
 
-
   function showAllTodo(data) {
     // $formCard.empty();
-    let template = ``
+    let template = ``;
     for (let i = 0; i < 6; i++) {
       template = `<div class="card-grid-space">
       <a class="card" data-toggle="modal" data-target ="#updateModal" href="https://app.ticketmaster.com/discovery/v2/events/${data[i].id}.json?apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY"
@@ -109,7 +114,7 @@ $(document).ready(function () {
   }
 
   var Todo = $("#addButton");
-  Todo.on("submit", function (e) {
+  Todo.on("submit", function(e) {
     e.preventDefault();
     let title = $("#AddTitle").val();
     let description = $("#AddDescription").val();
@@ -133,7 +138,7 @@ $(document).ready(function () {
     });
   }
 
-  $(this).click(function (e) {
+  $(this).click(function(e) {
     if (document.activeElement.id === "deleteButton") {
       e.preventDefault();
       deleteTodo(document.activeElement.href);
@@ -155,7 +160,7 @@ $(document).ready(function () {
     });
   }
 
-  $editForm.on("submit", function (e) {
+  $editForm.on("submit", function(e) {
     e.preventDefault();
     $.ajax({
       method: "PUT",
@@ -239,7 +244,7 @@ function onSignIn(googleUser) {
 
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function () {
+  auth2.signOut().then(function() {
     console.log("User signed out.");
   });
 }
