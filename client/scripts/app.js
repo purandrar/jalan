@@ -6,13 +6,13 @@ $(document).ready(function () {
   var $formbody = $("#formbody");
   var $formCard = $('.cards-wrapper')
 
-  //   if (!localStorage.getItem("token")) {
-  //     $("#login").show();
-  //     $("#showtableContainer").hide();
-  //   } else {
-  //     $($login).hide();
-  //     showTodo();
-  //   }
+  // if (!localStorage.getItem("token")) {
+  //   $("#home").show();
+  //   // $("#showtableContainer").hide();
+  // } else {
+  //   $("#home").hide();
+  //   showTodo();
+  // }
 
   showEvent()
 
@@ -40,6 +40,7 @@ $(document).ready(function () {
       .done(result => {
         console.log(123);
         //$("#registerModal").modal("hide");
+        $('#home').hide()
       })
       .fail(err => {
         console.log(123);
@@ -64,6 +65,7 @@ $(document).ready(function () {
       .done(result => {
         localStorage.setItem("token", result);
         showEvent(result);
+        $('home').hide()
       })
       .fail(err => {
         console.log(err, "nnnnnnn");
