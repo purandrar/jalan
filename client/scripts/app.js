@@ -2,31 +2,35 @@ var localhost = "http://localhost:3000";
 $(document).ready(function () {
   var $buttonLogin = $("#buttonLogin");
   var $editForm = $("#editForm");
-  var $register = $("#register");
-  var $formbody = $("#formbody");
-  var $formCard = $('.cards-wrapper')
-
+  var $registerForm = $("#register");
+  let $formCard = $(".cards-wrapper");
+  let $addToFav;
+  let $deleteToFav;
   // if (!localStorage.getItem("token")) {
-  //   $("#home").show();
-  //   // $("#showtableContainer").hide();
+  //   $("#login").show();
+  //   $("#showtableContainer").hide();
   // } else {
-  //   $("#home").hide();
-  //   showTodo();
+  //   $($login).hide();
+  //   showEvent();
   // }
 
-  showEvent()
-
-  var $template = `  <a class="card" href="#LINKkeMODAL"
-                    style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                    <div>
-                    <h1>Musik DangDut</h1>
-                    <p>Learn about some of the most common HTML tags…</p>
-                    <div class="date">9 Oct 2017</div>
-                    </div></a>`;
-
-  $register.on("submit", function (e) {
+  showEvent();
+  $deleteFromFav.on("submit", function (e) {
+    return $.ajax({
+      method: "DELETE",
+      url: url,
+      headers: {
+        token: localStorage.token
+      }
+    })
+      .done(data => { })
+      .fail(data => {
+        console.log(data);
+      });
+  });
+  $registerForm.on("submit", function (e) {
     e.preventDefault();
-    console.log($("#passwordRegis").val());
+    console.log(123);
     $.ajax({
       method: "POST",
       url: `${localhost}/user/register`,
@@ -38,12 +42,10 @@ $(document).ready(function () {
       }
     })
       .done(result => {
-        console.log(123);
         //$("#registerModal").modal("hide");
-        $('#home').hide()
+        console.log(123);
       })
       .fail(err => {
-        console.log(123);
         //console.log(err, "nnnnnnn");
       });
   });
@@ -52,8 +54,7 @@ $(document).ready(function () {
     e.preventDefault();
     var $email = $("#emailLogin").val();
     var $password = $("#passwordLogin").val();
-    console.log($password);
-    console.log($email);
+
     $.ajax({
       method: "POST",
       url: `${localhost}/user/login`,
@@ -64,6 +65,7 @@ $(document).ready(function () {
     })
       .done(result => {
         localStorage.setItem("token", result);
+        console.log($email);
         showEvent(result);
         $('home').hide()
       })
@@ -72,29 +74,26 @@ $(document).ready(function () {
       });
   });
 
-
   function showEvent() {
     $.ajax({
       type: "GET",
       url: `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY`,
       dataType: "json",
       success: function (json) {
-        console.log(json);
         // Parse the response.
         // Do other things.
-        showAllTodo(json._embedded.events)
+        showAllTodo(json._embedded.events);
       },
       error: function (xhr, status, err) {
         // This time, we do not end up here!
-        console.log(err)
+        console.log(err);
       }
     });
   }
 
-
   function showAllTodo(data) {
     // $formCard.empty();
-    let template = ``
+    let template = ``;
     for (let i = 0; i < 6; i++) {
       template = `<div class="card-grid-space">
       <a class="card" data-toggle="modal" data-target ="#updateModal" href="https://app.ticketmaster.com/discovery/v2/events/${data[i].id}.json?apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY"
@@ -104,7 +103,7 @@ $(document).ready(function () {
           <div class="date">${data[i].dates.start.localDate}</div>
       </div>
       </a>
-    </div>`
+    </div>`;
 
       $formCard.append(template);
     }
@@ -226,7 +225,7 @@ function onSignIn(googleUser) {
   var id_token = googleUser.getAuthResponse().id_token;
   $.ajax({
     method: "POST",
-    url: `${localhost}/user/googleLogin`,
+    url: `${localhost}/googleLogin`,
     data: {
       token: id_token
     }
@@ -235,6 +234,7 @@ function onSignIn(googleUser) {
       localStorage.setItem("token", data);
     })
     .fail(err => {
+      console.log(12);
       console.log(err);
     });
 }

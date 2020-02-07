@@ -1,6 +1,3 @@
-
-
-
 const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
@@ -15,14 +12,13 @@ class userController {
     };
     User.create(objInput)
       .then(result => {
-        console.log('masuk')
+        console.log("masuk");
         res.status(201).json(result);
       })
       .catch(err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   }
-
 
   static login(req, res, next) {
     let password = req.body.password;
@@ -37,7 +33,7 @@ class userController {
         if (compare) {
           let token = jwt.sign(
             { email: result.email, id: result.id },
-            process.env.secret_key
+            "ini rahasia"
           );
           res.status(201).json(token);
         } else {
@@ -48,11 +44,12 @@ class userController {
         }
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
         // next(err);
       });
   }
   static googleLogin(req, res, next) {
+    console.log(result);
     User.findOne({
       where: {
         email: req.payload.email
