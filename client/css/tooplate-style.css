@@ -519,7 +519,7 @@ body {
   }
 
   .custom-navbar .navbar-brand {
-    color: #ffffff;
+    color: #202020;
     font-size: 25px;
     font-weight: 500;
     letter-spacing: -1px;
@@ -536,7 +536,7 @@ body {
   .custom-navbar .nav li a {
     font-size: 16px;
     font-weight: normal;
-    color: #f0f0f0;
+    color: #202020;
     padding-right: 22px;
     padding-left: 22px;
   }
