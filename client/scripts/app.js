@@ -1,5 +1,5 @@
 var localhost = "http://localhost:3000";
-$(document).ready(function () {
+$(document).ready(function() {
   var $buttonLogin = $("#buttonLogin");
   var $editForm = $("#editForm");
   var $registerForm = $("#register");
@@ -15,7 +15,7 @@ $(document).ready(function () {
   // }
 
   showEvent();
-  $deleteFromFav.on("submit", function (e) {
+  $deleteFromFav.on("submit", function(e) {
     return $.ajax({
       method: "DELETE",
       url: url,
@@ -23,38 +23,36 @@ $(document).ready(function () {
         token: localStorage.token
       }
     })
-      .done(data => { })
-      .fail(data => {
-        console.log(data);
-      });
+      .done(data => {})
+      .fail(data => {});
   });
-  $registerForm.on("submit", function (e) {
+  $registerForm.on("submit", function(e) {
     e.preventDefault();
-    console.log(123);
+    console.log($("#RegisterEmail").val());
     $.ajax({
       method: "POST",
       url: `${localhost}/user/register`,
       data: {
-        email: $("#emailRegis").val(),
-        age: $("#ageRegis").val(),
-        name: $("#nameRegis").val(),
-        password: $("#passwordRegis").val()
+        email: $("#RegisterEmail").val(),
+        age: $("#RegisterAge").val(),
+        name: $("#RegisterName").val(),
+        password: $("#RegisterPassword").val()
       }
     })
       .done(result => {
         //$("#registerModal").modal("hide");
-        console.log(123);
+        console.log(12345);
       })
       .fail(err => {
         //console.log(err, "nnnnnnn");
       });
   });
 
-  $buttonLogin.on("submit", function (e) {
+  $buttonLogin.on("submit", function(e) {
     e.preventDefault();
-    var $email = $("#emailLogin").val();
-    var $password = $("#passwordLogin").val();
-
+    var $email = $("#LoginEmail").val();
+    var $password = $("#LoginPassword").val();
+    console.log($email);
     $.ajax({
       method: "POST",
       url: `${localhost}/user/login`,
@@ -67,7 +65,7 @@ $(document).ready(function () {
         localStorage.setItem("token", result);
         console.log($email);
         showEvent(result);
-        $('home').hide()
+        $("home").hide();
       })
       .fail(err => {
         console.log(err, "nnnnnnn");
@@ -79,12 +77,12 @@ $(document).ready(function () {
       type: "GET",
       url: `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY`,
       dataType: "json",
-      success: function (json) {
+      success: function(json) {
         // Parse the response.
         // Do other things.
         showAllTodo(json._embedded.events);
       },
-      error: function (xhr, status, err) {
+      error: function(xhr, status, err) {
         // This time, we do not end up here!
         console.log(err);
       }
@@ -110,7 +108,7 @@ $(document).ready(function () {
   }
 
   var Todo = $("#addButton");
-  Todo.on("submit", function (e) {
+  Todo.on("submit", function(e) {
     e.preventDefault();
     let title = $("#AddTitle").val();
     let description = $("#AddDescription").val();
@@ -134,7 +132,7 @@ $(document).ready(function () {
     });
   }
 
-  $(this).click(function (e) {
+  $(this).click(function(e) {
     if (document.activeElement.id === "deleteButton") {
       e.preventDefault();
       deleteTodo(document.activeElement.href);
@@ -156,7 +154,7 @@ $(document).ready(function () {
     });
   }
 
-  $editForm.on("submit", function (e) {
+  $editForm.on("submit", function(e) {
     e.preventDefault();
     $.ajax({
       method: "PUT",
@@ -240,7 +238,7 @@ function onSignIn(googleUser) {
 
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function () {
+  auth2.signOut().then(function() {
     console.log("User signed out.");
   });
 }
