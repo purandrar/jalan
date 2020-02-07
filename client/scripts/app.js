@@ -2,7 +2,7 @@ var localhost = "http://localhost:3000";
 $(document).ready(function () {
   var $buttonLogin = $("#buttonLogin");
   var $editForm = $("#editForm");
-  var $register = $("#register");
+  var $register = $("#RegisterForm");
   var $formbody = $("#formbody");
   var $formCard = $('.cards-wrapper')
 
