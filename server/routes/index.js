@@ -8,7 +8,7 @@ const usercontroller = require("../controllers/usercontroller");
 
 router.use("/user", routeUser);
 router.use("/googleLogin", verifyGoogle, usercontroller.googleLogin);
-//router.use(authentication)
+router.use(authentication)
 router.use("/event", routeEvent);
 
 module.exports = router;

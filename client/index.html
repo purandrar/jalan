@@ -18,14 +18,11 @@
      <link rel="stylesheet" href="css/owl.theme.default.min.css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
      <script src="https://apis.google.com/js/platform.js" async defer></script>
-     <!-- <script src="./scripts/app.js"></script> -->
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
      <link rel="stylesheet" href="styles/card.css">
      <link rel="stylesheet" href="styles/detailEvent.css">
-     <link rel="stylesheet" href="styles/cardprofile.scss">
-
 
 
 </head>
@@ -56,7 +53,7 @@
                     </button>
 
                     <!-- lOGO TEXT HERE -->
-                    <a href="index.html" class="navbar-brand">Pur&Friends</a>
+                    <a href="index.html" class="navbar-brand">Pur & Friends</a>
                </div>
 
                <!-- MENU LINKS -->
@@ -66,12 +63,11 @@
                          <li><a href="#home" class="smoothScroll">Home</a></li>
                          <li><a href="#event" class="smoothScroll">Event</a></li>
                          <li><a href="#mylist" class="smoothScroll">My List Event</a></li>
-                         <!-- <li><a href="#team" class="smoothScroll">Team</a></li> -->
+                         <li><a href="#team" class="smoothScroll">Team</a></li>
                          <!-- <li><a href="#contact" class="smoothScroll">Contact</a></li> -->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                          <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-                         <li><a href="#" data-toggle="modal" data-target="#modalProfile">Profile</span></a></li>
                          <li><a href="#">Logout</span></a></li>
                          <!-- <li>
                               <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -94,20 +90,20 @@
                               Login
                               <span class="underline"></span>
                          </button>
-                         <form class="form form-login">
+                         <form class="form form-login" id="buttonLogin">
                               <fieldset>
                                    <legend>Please, enter your email and password for login.</legend>
                                    <div class="input-block">
                                         <label for="login-email">E-mail</label>
-                                        <input id="login-email" type="email" required id="LoginEmail">
+                                        <input type="email" required id="emailLogin">
                                    </div>
                                    <div class="input-block">
                                         <label for="login-password">Password</label>
-                                        <input id="login-password" type="password" required id="LoginPassword">
+                                        <input type="password" required id="passwordLogin">
                                    </div>
                               </fieldset>
-                              <button type="submit" class="btn-login" id="buttonLogin">Login</button>
-                              <button class="g-signin2" data-onsuccess="onSignIn" style="padding: 0;"></button>
+                              <button type="submit" class="btn-login" >Login</button>
+                              <div class="g-signin2" data-onsuccess="onSignIn"></div>
                          </form>
                     </div>
                     <div class="form-wrapper">
@@ -115,50 +111,40 @@
                               Sign Up
                               <span class="underline"></span>
                          </button>
-                         <form class="form form-signup" id="RegisterForm">
+                         <form class="form form-signup" id="register"">
                               <fieldset>
                                    <legend>Please, enter your email, password and password confirmation for sign up.
                                    </legend>
                                    <div class="input-block">
                                         <label for="signup-password">Name</label>
-                                        <input id="signup-password" type="text" required id="RegisterName">
+                                        <input  type="text" required id="nameRegis">
                                    </div>
                                    <div class="input-block">
                                         <label for="signup-password">Age</label>
-                                        <input type="text" required id="RegisterAge">
+                                        <input type="text" required id="ageRegis">
                                    </div>
                                    <div class="input-block">
                                         <label for="signup-email">E-mail</label>
-                                        <input id="signup-email" type="email" required id="RegisterEmail">
+                                        <input  type="email" required id="emailRegis">
                                    </div>
                                    <div class="input-block">
                                         <label for="signup-password-confirm">password</label>
-                                        <input id="signup-password-confirm" type="password" required
-                                             id="RegisterPassword">
+                                        <input  type="password" required
+                                             id="passwordRegis">
                                    </div>
                               </fieldset>
-                              <button type="submit" class="btn-signup" id="register">Continue</button>
+                              <button type="submit" class="btn-signup" >Continue</button>
                          </form>
                     </div>
                </div>
           </section>
-          </div>
-          </div>
      </section>
 
 
 
 
-
      <!-- FEATURE -->
-     <!-- <section id="feature" data-stellar-background-ratio="0.5">
-                                   
-                              </section> -->
-
-
-     <!-- FEATURE SHOW DARI API -->
-     <section id="event" data-stellar-background-ratio="0.5">
-
+     <section id="feature" data-stellar-background-ratio="0.5">
           <div class="container">
                <div class="row">
                     <div class="col-md-offset-3 col-md-6 col-sm-12">
@@ -169,36 +155,10 @@
                     </div>
                     <section class="cards-wrapper">
                          <!-- ini yang di looping -->
-
+                         
                          <!-- sampe sini -->
 
-
-                         <div class="card-grid-space">
-                              <a class="card" href="#LINKkeMODAL"
-                                   style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                                   <div>
-                                        <h1>Musik DangDut</h1>
-                                        <p>Learn about some of the most common HTML tags…
-                                        </p>
-                                        <div class="date">9 Oct 2017</div>
-                                   </div>
-                              </a>
-                         </div>
-
-
-                         <div class="card-grid-space">
-
-                              <a class="card" href="#LINKkeMODAL"
-                                   style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                                   <div>
-                                        <h1>Links, images and about file paths</h1>
-                                        <p>Learn how to use links and images along with
-                                             file paths…</p>
-                                        <div class="date">14 Oct 2017</div>
-                                   </div>
-                              </a>
-                         </div>
-
+                         <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
                     </section>
                </div>
           </div>
@@ -223,95 +183,40 @@
           </div>
      </section>
 
-     <!-- Button trigger modal -->
-     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProfile">
-          profile
-     </button> -->
-
-     <!-- Modal -->
-     <section>
-          <div class="modal fade" id="modalProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-               aria-hidden="true">
-               <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                         <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Update Profile
-                              </h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                   <span aria-hidden="true">&times;</span>
-                              </button>
-                         </div>
-                         <div class="modal-body">
-                              <form>
-                                   <div class="form-group">
-                                        <label for="exampleFormControlInput1">Name</label>
-                                        <input type="text" class="form-control">
-                                        <div class="form-group">
-                                             <label for="exampleFormControlInput1">Age</label>
-                                             <input type="text" class="form-control" placeholder="age">
-                                        </div>
-                              </form>
-                         </div>
-                         <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save
-                                   changes</button>
-                         </div>
-                    </div>
-               </div>
-          </div>
-     </section>
 
      <!-- INI untuk modal -->
-     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large
-          modal</button>
-
-     <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog modal-xl" role="document">
-               <div class="modal-content">
-
-
-                    <div class="product-img">
-                         <img src="http://bit.ly/2tMBBTd">
-                    </div>
-                    <div class="product-info">
-                         <div class="product-text">
-                              <h1>Harvest Vase</h1>
-                              <p>Harvest Vases are a reinterpretation<br> of peeled fruits and
-                                   vegetables as<br>
-                                   functional objects. The surfaces<br> appear to be sliced and
-                                   pulled aside,<br>
-                                   allowing room for growth. </p>
-                         </div>
-
-                    </div>
-
-
-                    <table class="table">
-                         <thead>
-                              <tr>
-                                   <th scope="col">Tanggal</th>
-                                   <th scope="col">Description</th>
-                              </tr>
-                         </thead>
-                         <tbody>
-                              <tr>
-                                   <td>Mark</td>
-                                   <td>Otto</td>
-                              </tr>
-                         </tbody>
-                    </table>
-
-
-               </div>
-          </div>
+     
+     <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eventDetail">
+     Launch demo modal
+   </button>
+   
+   <!-- Modal -->
+   <div class="modal fade" id="eventDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+               
+          
+          </table>
+         </div>
+       </div>
      </div>
-
+   </div>
+        
+     
+     
+     
      <!-- sampai sini modal -->
 
      <!-- ABOUT -->
-     <!-- <section id="team" data-stellar-background-ratio="0.5">
+     <section id="team" data-stellar-background-ratio="0.5">
           <div class="container">
                <div class="row">
 
@@ -359,7 +264,7 @@
 
                </div>
           </div>
-     </section> -->
+     </section>
 
 
 
@@ -368,7 +273,7 @@
 
 
      <!-- CONTACT -->
-     <!-- <section id="contact" data-stellar-background-ratio="0.5">
+     <section id="contact" data-stellar-background-ratio="0.5">
           <div class="container">
                <div class="row">
 
@@ -398,7 +303,7 @@
 
                </div>
           </div>
-     </section> -->
+     </section>
 
 
      <!-- FOOTER -->
