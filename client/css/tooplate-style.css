@@ -5,7 +5,7 @@
   body {
     font-family: 'Open Sans', sans-serif;
     overflow-x: hidden;
-    background: #f9f9f9;
+    background: #03e298;
   }
   *,
   *::before,
@@ -356,7 +356,7 @@ body {
   }
 
   a:hover, a:active, a:focus {
-    color: #29ca8e;
+    color: #07f33a;
     outline: none;
   }
 
@@ -515,6 +515,7 @@ body {
     border: none;
     margin-bottom: 0;
     padding: 25px 0;
+    background-color: white;
   }
 
   .custom-navbar .navbar-brand {
@@ -541,17 +542,17 @@ body {
   }
 
   .custom-navbar .nav li a:hover {
-    background: transparent;
+    /* background: transparent; */
     color: #29ca8e;
   }
 
-  .custom-navbar .navbar-nav > li > a:hover,
+  /* .custom-navbar .navbar-nav > li > a:hover,
   .custom-navbar .navbar-nav > li > a:focus {
-    background-color: transparent;
-  }
+    /* background-color: transparent; 
+  } */
 
   .custom-navbar .nav li.active > a {
-    background-color: transparent;
+    /* background-color: transparent; */
     color: #29ca8e;
   }
 
@@ -560,13 +561,13 @@ body {
     padding-top: 10px;
   }
 
-  .custom-navbar .navbar-toggle {
+  /* .custom-navbar .navbar-toggle {
     background-color: transparent;
-  }
+  } */
 
   .custom-navbar .navbar-toggle .icon-bar {
     background: #29ca8e;
-    border-color: transparent;
+    /* border-color: transparent; */
   }
 
   @media(min-width:768px) {
@@ -661,7 +662,7 @@ body {
     color: #999999;
     font-size: 18px;
     border: 0;
-    border-bottom: 3px solid transparent;
+    /* border-bottom: 3px solid transparent; */
     border-radius: 0;
     margin-right: 35px;
   }
@@ -669,14 +670,14 @@ body {
   #feature .nav-tabs>li.active>a, 
   #feature .nav-tabs>li.active>a:focus, 
   #feature .nav-tabs>li.active>a:hover {
-    background: transparent;
+    /* background: transparent; */
     color: #202020;
     border-bottom: 3px solid #29ca8e;
   }
 
   #feature .nav>li>a:focus, 
   #feature .nav>li>a:hover {
-    background: transparent;
+    /* background: transparent; */
     border-bottom: 3px solid #29ca8e;
     color: #202020;
   }

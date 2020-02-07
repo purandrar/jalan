@@ -1,17 +1,19 @@
-const localhost = "http://localhost:3000";
+var localhost = "http://localhost:3000";
 $(document).ready(function () {
   var $LoginSubmit = $("#LoginSubmit");
   var $editForm = $("#editForm");
   var $registerForm = $("#RegisterForm");
-  let $formbody = $("#formbody");
+  let $formCard = $(".cards-wrapper");
 
-  if (!localStorage.getItem("token")) {
-    $("#login").show();
-    $("#showtableContainer").hide();
-  } else {
-    // $($login).hide();
-    showTodo();
-  }
+  // if (!localStorage.getItem("token")) {
+  //   $("#login").show();
+  //   $("#showtableContainer").hide();
+  // } else {
+  //   $($login).hide();
+  //   showEvent();
+  // }
+
+  showEvent()
 
   $registerForm.on("submit", function (e) {
     e.preventDefault();
@@ -26,7 +28,7 @@ $(document).ready(function () {
       }
     })
       .done(result => {
-        console.log(1234);
+        // console.log(1234);
         $('#formLoginRegister').hide()
         $('#eventjq').show()
         // $("#registerModal").modal("hide");
@@ -51,49 +53,48 @@ $(document).ready(function () {
     })
       .done(result => {
         localStorage.setItem("token", result);
-        showTodo(result);
+        showEvent(result);
       })
       .fail(err => {
         console.log(err, "nnnnnnn");
       });
   });
 
-  var $template = `  <tr>
-                      <td class = "id"></td>
-                      <td class = "title"></td>
-                      <td class = "description"></td>
-                      <td class = "status"></td>
-                      <td class = "due_date"></td>
-                      <td class = "delete" ><a class="btn btn-primary" role="button" id="deleteButton">DELETE</a></td>
-                      <td class = "edit" ><a class="btn btn-primary" role="button" id="editButton"    data-toggle="modal"
-                      data-target="#updateModal">EDIT</a></td>
-                    </tr>`;
-  function showTodo() {
+
+  function showEvent() {
     $.ajax({
-      method: "GET",
-      url: `${localhost}/todo`,
-      headers: {
-        token: localStorage.token
+      type: "GET",
+      url: "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY",
+      dataType: "json",
+      success: function (json) {
+        console.log(json);
+        // Parse the response.
+        // Do other things.
+        showAllTodo(json._embedded.events)
+      },
+      error: function (xhr, status, err) {
+        // This time, we do not end up here!
+        console.log(err)
       }
-    }).done(data => {
-      showAllTodo(data.result);
     });
   }
 
+
   function showAllTodo(data) {
-    $formbody.empty();
-    for (let i = 0; i < data.length; i++) {
-      var $item = $($template);
-      $item.find(".id").text(data[i].id);
-      $item.find(".title").text(data[i].Title);
-      $item.find(".description").text(data[i].Description);
-      $item.find(".status").text(data[i].Status);
-      $item.find(".due_date").text(formatDate(data[i].Due_date));
-      $item
-        .find("#deleteButton")
-        .prop("href", `${localhost}/todo/${data[i].id}`);
-      $item.find("#editButton").prop("href", `${localhost}/todo/${data[i].id}`);
-      $formbody.append($item);
+    // $formCard.empty();
+    let template = ``
+    for (let i = 0; i < 6; i++) {
+      template = `<div class="card-grid-space">
+      <a class="card" data-toggle="modal" data-target ="#updateModal" href="https://app.ticketmaster.com/discovery/v2/events/${data[i].id}.json?apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY"
+        style="--bg-img: url('${data[i].images[1].url}')">
+      <div>
+          <h1 id ="title">${data[i].name}</h1>
+          <div class="date">${data[i].dates.start.localDate}</div>
+      </div>
+      </a>
+    </div>`
+
+      $formCard.append(template);
     }
   }
 
@@ -117,7 +118,7 @@ $(document).ready(function () {
       data: alldata
     }).done(data => {
       clearForm("#AddTitle");
-      showTodo();
+      showEvent();
       $("#addModal").modal("hide");
     });
   }
@@ -126,13 +127,13 @@ $(document).ready(function () {
     if (document.activeElement.id === "deleteButton") {
       e.preventDefault();
       deleteTodo(document.activeElement.href);
-    } else if (document.activeElement.id === "editButton") {
+    } else if (document.activeElement.id === "gambar") {
       e.preventDefault();
-      getDataForEditTodo(document.activeElement.href);
+      gedDetailEvent(document.activeElement.href);
     }
   });
 
-  function getDataForEditTodo(url) {
+  function gedDetailEvent(url) {
     $.ajax({
       method: "GET",
       url: url,
@@ -140,11 +141,7 @@ $(document).ready(function () {
         token: localStorage.token
       }
     }).done(result => {
-      $("#editId").val(result.data.id);
-      $("#EditTitle").val(result.data.Title);
-      $("#EditDescription").val(result.data.Description);
-      $("#EditStatus").val(result.data.Status);
-      $("#EditDue_date").val(formatDate(result.data.Due_date));
+      // isi modal
     });
   }
 
@@ -164,7 +161,7 @@ $(document).ready(function () {
       }
     }).done(() => {
       $("#updateModal").modal("hide");
-      showTodo();
+      showEvent();
     });
   });
 
@@ -177,7 +174,7 @@ $(document).ready(function () {
       }
     })
       .done(data => {
-        showTodo();
+        showEvent();
       })
       .fail(data => {
         console.log(data);
