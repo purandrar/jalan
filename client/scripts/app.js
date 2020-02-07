@@ -5,6 +5,7 @@ $(document).ready(function() {
   var $registerForm = $("#register");
   let $formCard = $(".cards-wrapper");
   let $addToFav;
+  let $deleteToFav;
   // if (!localStorage.getItem("token")) {
   //   $("#login").show();
   //   $("#showtableContainer").hide();
@@ -14,7 +15,19 @@ $(document).ready(function() {
   // }
 
   showEvent();
-
+  $deleteFromFav.on("submit", function(e) {
+    return $.ajax({
+      method: "DELETE",
+      url: url,
+      headers: {
+        token: localStorage.token
+      }
+    })
+      .done(data => {})
+      .fail(data => {
+        console.log(data);
+      });
+  });
   $registerForm.on("submit", function(e) {
     e.preventDefault();
     console.log(123);
@@ -211,7 +224,7 @@ function onSignIn(googleUser) {
   var id_token = googleUser.getAuthResponse().id_token;
   $.ajax({
     method: "POST",
-    url: `${localhost}/user/googleLogin`,
+    url: `${localhost}/googleLogin`,
     data: {
       token: id_token
     }
@@ -220,6 +233,7 @@ function onSignIn(googleUser) {
       localStorage.setItem("token", data);
     })
     .fail(err => {
+      console.log(12);
       console.log(err);
     });
 }

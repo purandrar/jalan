@@ -49,6 +49,7 @@ class userController {
       });
   }
   static googleLogin(req, res, next) {
+    console.log(result);
     User.findOne({
       where: {
         email: req.payload.email
