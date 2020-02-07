@@ -2,28 +2,41 @@ const localhost = "http://localhost:3000";
 $(document).ready(function() {
   var $buttonLogin = $("#buttonLogin");
   var $editForm = $("#editForm");
-  var $register = $("#register");
-  let $formbody = $("#formbody");
+  var $registerForm = $("#register");
+  let $formCard = $(".cards-wrapper");
+  let $addToFav;
+  // if (!localStorage.getItem("token")) {
+  //   $("#login").show();
+  //   $("#showtableContainer").hide();
+  // } else {
+  //   $($login).hide();
+  //   showEvent();
+  // }
 
-  //   if (!localStorage.getItem("token")) {
-  //     $("#login").show();
-  //     $("#showtableContainer").hide();
-  //   } else {
-  //     $($login).hide();
-  //     showTodo();
-  //   }
-
-  var $template = `  <a class="card" href="#LINKkeMODAL"
-                    style="--bg-img: url('https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
-                    <div>
-                    <h1>Musik DangDut</h1>
-                    <p>Learn about some of the most common HTML tags…</p>
-                    <div class="date">9 Oct 2017</div>
-                    </div></a>`;
-
-  $register.on("submit", function(e) {
+  showEvent();
+  $addToFav.on("submit", function(e) {
     e.preventDefault();
-    console.log($("#passwordRegis").val());
+
+    $.ajax({
+      method: "POST",
+      url: `${localhost}/event`,
+      data: {
+        email: $("#emailRegis").val(),
+        age: $("#ageRegis").val(),
+        name: $("#nameRegis").val(),
+        password: $("#passwordRegis").val()
+      }
+    })
+      .done(result => {
+        //$("#registerModal").modal("hide");
+      })
+      .fail(err => {
+        //console.log(err, "nnnnnnn");
+      });
+  });
+  $registerForm.on("submit", function(e) {
+    e.preventDefault();
+    console.log(12);
     $.ajax({
       method: "POST",
       url: `${localhost}/user/register`,
@@ -35,11 +48,10 @@ $(document).ready(function() {
       }
     })
       .done(result => {
-        console.log(123);
         //$("#registerModal").modal("hide");
+        console.log(123);
       })
       .fail(err => {
-        console.log(123);
         //console.log(err, "nnnnnnn");
       });
   });
@@ -48,8 +60,6 @@ $(document).ready(function() {
     e.preventDefault();
     var $email = $("#emailLogin").val();
     var $password = $("#passwordLogin").val();
-    console.log($password);
-    console.log($email);
     $.ajax({
       method: "POST",
       url: `${localhost}/user/login`,
@@ -60,48 +70,46 @@ $(document).ready(function() {
     })
       .done(result => {
         localStorage.setItem("token", result);
+        showEvent(result);
       })
       .fail(err => {
         console.log(err, "nnnnnnn");
       });
   });
 
-  var $template = `  <tr>
-                      <td class = "id"></td>
-                      <td class = "title"></td>
-                      <td class = "description"></td>
-                      <td class = "status"></td>
-                      <td class = "due_date"></td>
-                      <td class = "delete" ><a class="btn btn-primary" role="button" id="deleteButton">DELETE</a></td>
-                      <td class = "edit" ><a class="btn btn-primary" role="button" id="editButton"    data-toggle="modal"
-                      data-target="#updateModal">EDIT</a></td>
-                    </tr>`;
-  function showTodo() {
+  function showEvent() {
     $.ajax({
-      method: "GET",
-      url: `${localhost}/todo`,
-      headers: {
-        token: localStorage.token
+      type: "GET",
+      url:
+        "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY",
+      dataType: "json",
+      success: function(json) {
+        // Parse the response.
+        // Do other things.
+        showAllTodo(json._embedded.events);
+      },
+      error: function(xhr, status, err) {
+        // This time, we do not end up here!
+        console.log(err);
       }
-    }).done(data => {
-      showAllTodo(data.result);
     });
   }
 
   function showAllTodo(data) {
-    $formbody.empty();
-    for (let i = 0; i < data.length; i++) {
-      var $item = $($template);
-      $item.find(".id").text(data[i].id);
-      $item.find(".title").text(data[i].Title);
-      $item.find(".description").text(data[i].Description);
-      $item.find(".status").text(data[i].Status);
-      $item.find(".due_date").text(formatDate(data[i].Due_date));
-      $item
-        .find("#deleteButton")
-        .prop("href", `${localhost}/todo/${data[i].id}`);
-      $item.find("#editButton").prop("href", `${localhost}/todo/${data[i].id}`);
-      $formbody.append($item);
+    // $formCard.empty();
+    let template = ``;
+    for (let i = 0; i < 6; i++) {
+      template = `<div class="card-grid-space">
+      <a class="card" data-toggle="modal" data-target ="#updateModal" href="https://app.ticketmaster.com/discovery/v2/events/${data[i].id}.json?apikey=nFzGDrEAznGkdhLQthGKpzPvnsoPfYOY"
+        style="--bg-img: url('${data[i].images[1].url}')">
+      <div>
+          <h1 id ="title">${data[i].name}</h1>
+          <div class="date">${data[i].dates.start.localDate}</div>
+      </div>
+      </a>
+    </div>`;
+
+      $formCard.append(template);
     }
   }
 
@@ -125,7 +133,7 @@ $(document).ready(function() {
       data: alldata
     }).done(data => {
       clearForm("#AddTitle");
-      showTodo();
+      showEvent();
       $("#addModal").modal("hide");
     });
   }
@@ -134,13 +142,13 @@ $(document).ready(function() {
     if (document.activeElement.id === "deleteButton") {
       e.preventDefault();
       deleteTodo(document.activeElement.href);
-    } else if (document.activeElement.id === "editButton") {
+    } else if (document.activeElement.id === "gambar") {
       e.preventDefault();
-      getDataForEditTodo(document.activeElement.href);
+      gedDetailEvent(document.activeElement.href);
     }
   });
 
-  function getDataForEditTodo(url) {
+  function gedDetailEvent(url) {
     $.ajax({
       method: "GET",
       url: url,
@@ -148,11 +156,7 @@ $(document).ready(function() {
         token: localStorage.token
       }
     }).done(result => {
-      $("#editId").val(result.data.id);
-      $("#EditTitle").val(result.data.Title);
-      $("#EditDescription").val(result.data.Description);
-      $("#EditStatus").val(result.data.Status);
-      $("#EditDue_date").val(formatDate(result.data.Due_date));
+      // isi modal
     });
   }
 
@@ -172,7 +176,7 @@ $(document).ready(function() {
       }
     }).done(() => {
       $("#updateModal").modal("hide");
-      showTodo();
+      showEvent();
     });
   });
 
@@ -185,7 +189,7 @@ $(document).ready(function() {
       }
     })
       .done(data => {
-        showTodo();
+        showEvent();
       })
       .fail(data => {
         console.log(data);
